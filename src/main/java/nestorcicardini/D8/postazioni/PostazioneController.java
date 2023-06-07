@@ -73,8 +73,11 @@ public class PostazioneController {
 		postazioneService.findByIdAndDelete(UUID.fromString(postazioneId));
 	}
 
-//	@PutMapping("")
-//	public Postazione editPostazione(@RequestBody PostazionePayload payload, ) {
-//	}
+	@PostMapping("/{postazioneId}")
+	public Postazione editPostazione(@RequestBody PostazionePayload payload,
+			@PathVariable String postazioneId) {
+		return postazioneService.findByIdAndUpdate(payload,
+				UUID.fromString(postazioneId));
+	}
 
 }

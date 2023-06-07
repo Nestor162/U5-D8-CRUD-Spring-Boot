@@ -47,4 +47,14 @@ public class PostazioneService {
 		Postazione found = this.findById(id);
 		postazioneRepo.delete(found);
 	}
+
+	public Postazione findByIdAndUpdate(PostazionePayload payload, UUID id) {
+		Postazione found = this.findById(id);
+		found.setId(id);
+		found.setCitta(payload.getCitta());
+		found.setTipo(payload.getTipo());
+
+		return postazioneRepo.save(found);
+
+	}
 }
