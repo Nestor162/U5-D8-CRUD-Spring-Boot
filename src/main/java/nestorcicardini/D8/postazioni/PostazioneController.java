@@ -1,8 +1,6 @@
 package nestorcicardini.D8.postazioni;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,18 +18,23 @@ public class PostazioneController {
 	PostazioneService postazioneService;
 
 	@GetMapping("")
-	public List<Postazione> getUtenti() {
+	public List<Postazione> getPostazioni() {
 		return postazioneService.findAll();
 	}
 
-	@GetMapping("{id}")
-	public Optional<Postazione> getUtentiById(@PathVariable UUID id) {
-		return postazioneService.findById(id);
+	@GetMapping("/{tipo}")
+	public List<Postazione> getPostazioniByType(@PathVariable String tipo) {
+		Postazione.Tipo tipoEnum = Postazione.Tipo.valueOf(tipo);
+		return postazioneService.findByTipo(tipoEnum);
 	}
 
 	@PostMapping("")
 	public Postazione savePostazione(@RequestBody PostazionePayload payload) {
 		return postazioneService.create(payload);
 	}
+
+//	@PutMapping("")
+//	public Postazione editPostazione(@RequestBody PostazionePayload payload, ) {
+//	}
 
 }
