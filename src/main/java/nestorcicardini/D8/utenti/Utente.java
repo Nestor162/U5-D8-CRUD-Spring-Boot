@@ -6,17 +6,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "utenti")
 public class Utente {
 	@Id
 	@GeneratedValue
 	private UUID id;
-	private String username;
+	private String nome;
+	private String cognome;
 	private String email;
+
+	public Utente(String nome, String cognome, String email) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+	}
+
 }
