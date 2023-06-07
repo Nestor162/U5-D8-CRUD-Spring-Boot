@@ -21,6 +21,14 @@ public class PostazioneService {
 		return postazioneRepo.findByTipo(tipoEnum);
 	}
 
+	public List<Postazione> findByCitta(String citta) {
+		return postazioneRepo.findByCitta(citta);
+	}
+
+	public List<Postazione> findByTipoAndCitta(Tipo tipo, String citta) {
+		return postazioneRepo.findByTipoAndCitta(tipo, citta);
+	}
+
 	public Postazione create(PostazionePayload pp) {
 		Postazione nuovaPostazione = new Postazione(pp.getTipo(),
 				pp.getCitta());

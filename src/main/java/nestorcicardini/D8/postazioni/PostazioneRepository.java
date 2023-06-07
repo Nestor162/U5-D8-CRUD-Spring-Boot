@@ -10,4 +10,8 @@ import nestorcicardini.D8.postazioni.Postazione.Tipo;
 public interface PostazioneRepository extends JpaRepository<Postazione, UUID> {
 	List<Postazione> findByTipo(Tipo tipoEnum);
 
+	List<Postazione> findByCitta(String citta);
+
+	List<Postazione> findByTipoAndCitta(Tipo tipo, String citta);
+
 }
